@@ -19,11 +19,13 @@
       c.removeAttribute("aria-label");
       return c;
     }
-    originals.forEach(function (el) { track.insertBefore(copy(el), originals[0]); });
-    originals.forEach(function (el) { track.appendChild(copy(el)); });
+    /* Three clones on each side is enough for the loop and keeps the page light. */
+    var c = Math.min(n, 3);
+    originals.slice(n - c).forEach(function (el) { track.insertBefore(copy(el), originals[0]); });
+    originals.slice(0, c).forEach(function (el) { track.appendChild(copy(el)); });
 
     var all = Array.prototype.slice.call(track.children);
-    var index = n;
+    var index = c;
     var step = 0;
     var dragX = 0;
     var startX = 0;
@@ -38,15 +40,21 @@
       step = all[0].offsetWidth + gap;
     }
 
+    var activeEl = null;
+
     function paint(animate) {
       track.style.transition = animate && !reduceMotion ? "" : "none";
       track.style.transform = "translate3d(" + (-index * step + dragX) + "px,0,0)";
-      all.forEach(function (el, i) { el.classList.toggle("is-active", i === index); });
+      if (activeEl !== all[index]) {
+        if (activeEl) activeEl.classList.remove("is-active");
+        activeEl = all[index];
+        activeEl.classList.add("is-active");
+      }
     }
 
     function normalize() {
-      if (index >= 2 * n) index -= n;
-      else if (index < n) index += n;
+      if (index >= c + n) index -= n;
+      else if (index < c) index += n;
       else return;
       paint(false);
       void track.offsetWidth;
