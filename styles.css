@@ -42,6 +42,7 @@
 
 :root {
   --campfire-red: #ed2124;
+  --campfire-red-text: #dc1215;
   --campfire-brown: #3c2415;
   --lightest-brown: #f5f3ef;
   --light-brown: #e2ded9;
@@ -49,7 +50,7 @@
   --campfire-yellow: #fbb040;
   --offwhite: #fffefa;
   --forest-green: #0a3420;
-  --olive-drab: #69802e;
+  --olive-drab: #677d2d;
   --dark-gray: #433f3b;
   --bright-green: #ccff00;
   --light-light-gray: #ededed;
@@ -498,7 +499,7 @@ p {
 }
 
 .page-coaching .label {
-  color: var(--campfire-red);
+  color: var(--campfire-red-text);
 }
 
 .cf-lede {
@@ -714,7 +715,7 @@ p {
   height: 37px;
   padding: 0 24px 1px;
   border-radius: 4px;
-  background: var(--campfire-red);
+  background: var(--campfire-red-text);
   color: var(--offwhite);
   font-size: 16px;
   line-height: 16px;
@@ -762,7 +763,7 @@ p {
   width: min(282px, 100%);
   margin-top: 40px;
   background: var(--offwhite);
-  color: var(--campfire-red);
+  color: var(--campfire-red-text);
 }
 
 .cf-button-light:hover,
@@ -926,7 +927,7 @@ p {
 /* Design (Grafica) page */
 
 :root {
-  --mid-gray: #807e7a;
+  --mid-gray: #777572;
 }
 
 .gr-wrap {
